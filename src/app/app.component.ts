@@ -5,27 +5,30 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   title = 'cap438';
-  message: string;
+  message = undefined;
   valid: Boolean;
   show: boolean;
 
+  account;
+  branchName;
+  check;
+  cashDeposited;
+  CashierName
 
 
+  // for question 1 subpart a
   checkAccount(accountNumber) {
     var value = accountNumber.value;
-
 
     if (value.length == 14) {
       this.message = 'Account number is equal to 14 digit!';
       this.valid = true;
 
     }
-    else if (value.length == 0) {
-      this.message = 'Account number can not be empty!';
-      this.valid = false;
-    }
+    
     else if (value.length < 14) {
       this.message = 'Account number can not be smaller then 14 digit!';
       this.valid = false;
@@ -34,9 +37,15 @@ export class AppComponent {
       this.message = 'Account number can not be greater then 14 digit!';
       this.valid = false;
     }
+    else {
+      this.message = 'Entered value belong to invalid case!';
+      this.valid = false;
+    }
 
   }
 
+
+  // for question 1 subpart b
   checkBranch(branch) {
     console.log(branch.value)
     var inputValue = branch.value;
@@ -59,6 +68,12 @@ export class AppComponent {
       this.message = 'Branch did not matched!';
       this.valid = false;
     }
+  }
+
+
+  // for question 1 subpart c
+  checkNo(chechNumber) {
+
   }
 
 }

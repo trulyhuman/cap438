@@ -120,6 +120,10 @@
               "devServerTarget": "cap438:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
     }

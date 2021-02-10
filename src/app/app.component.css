@@ -1,0 +1,49 @@
+/* 
+font-family: 'Lexend Mega', sans-serif;
+font-family: 'Lobster', cursive;
+font-family: 'Yusei Magic', sans-serif; 
+font-family: 'Poppins', sans-serif;
+*/
+
+.alert
+{
+    position: sticky;
+    top: 0;
+}
+
+.heading {
+  font-family: "Lobster", cursive;
+  text-align: center;
+  font-size: 40px;
+  margin: 50px 0px 60px;
+  color: #ffb400;
+}
+
+.wrapper {
+  box-shadow: 10px 20px 50px rgba(44, 62, 80, 0.2);
+  border-radius: 8px;
+  padding: 30px;
+  max-width: 700px;
+}
+
+.subheading {
+  font-family: "Yusei Magic", sans-serif;
+  font-size: 20px;
+}
+
+.subquestionlist {
+  margin-left: 20px;
+  font-family: "Poppins", sans-serif;
+  color: #2d4059;
+}
+.subquestionlist > li {
+  margin-bottom: 50px;
+}
+.subquestionlist li ul li {
+  padding-top: 25px;
+  max-width: 600px;
+}
+
+.table {
+  text-align: center;
+}

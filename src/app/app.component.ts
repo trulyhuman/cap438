@@ -155,7 +155,7 @@ export class AppComponent {
 
     }
 
-    if (age < 18 || age >= 60 || year >= 30) {
+    if (age <=18 || age >= 60 || year >= 30) {
       this.baseDays = this.baseDays + 5;
     }
     else if ((age >= 45 && age < 60) || (year >= 15 && year < 30)) {

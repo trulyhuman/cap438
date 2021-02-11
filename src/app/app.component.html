@@ -69,7 +69,7 @@
                     0-9 || !(0-9)
                   </td>
                 </tr>
-                <tr>
+                <tr class="wordBreak">
                   <td>ex. 7685496789678 <br /></td>
                   <td>ex. 57584938609235</td>
                   <td>ex. 986745678903547</td>
@@ -80,7 +80,7 @@
         </ul>
       </li>
       <!-- subpart a ends here -->
-
+      <hr />
       <!-- subpart b starts from here -->
       <li class="mt-3">
         Branch must be Jalandhar, Ludhiana or Hoshiarpur
@@ -96,7 +96,7 @@
             <button
               class="btn btn-danger mt-3"
               (click)="checkBranch(branch)"
-              [disabled]="!branchName"
+              [disabled]="!selectBranch"
             >
               Check
             </button>
@@ -131,7 +131,7 @@
         </ul>
       </li>
       <!-- subpart b ends here -->
-
+      <hr />
       <!-- subpart c starts from here -->
       <li class="mt-3">
         Cheque No. must be a six digit no. comprising of number 0-9
@@ -142,14 +142,14 @@
               class="form-control"
               placeholder="Enter your check no. here"
               name="checkNumber"
-              #checkNumber
-              [(ngModel)]="check"
+              #chequeNumber
+              [(ngModel)]="chequeNo"
             />
 
             <button
               class="btn btn-danger mt-3"
-              (click)="checkNo(checkNumber)"
-              [disabled]="!check"
+              (click)="checkNo(chequeNumber)"
+              [disabled]="!chequeNo"
             >
               Check
             </button>
@@ -188,15 +188,277 @@
                 </tr>
               </tbody>
             </table>
-            <button class="btn btn-outline-primary" data-toggle="collapse" data-target="#demo">
-              Check details
-            </button>
-
-            <div id="demo" class="collapse">Lorem ipsum dolor text....</div>
           </li>
         </ul>
       </li>
       <!-- subpart c ends here -->
+      <hr />
+      <!-- subpart d starts from here -->
+      <li class="mt-3">
+        Total of cash deposited must not be less then zero and greater then
+        50000.
+        <ul>
+          <li>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Enter your cash amount"
+              name="cash"
+              #cashInput
+              [(ngModel)]="cashDeposited"
+            />
+
+            <button
+              class="btn btn-danger mt-3"
+              (click)="cashDeposit(cashInput)"
+              [disabled]="!cashDeposited"
+            >
+              Check
+            </button>
+          </li>
+          <li>
+            <table class="table table-striped table-bordered">
+              <thead class="thead-dark">
+                <tr>
+                  <th colspan="3">Eqivalence Class Partitiong</th>
+                </tr>
+                <tr>
+                  <th>Invalid</th>
+                  <th>Valid</th>
+                  <th>Invalid</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>< 1</td>
+                  <td>1 - 5000</td>
+                  <td>> 5000</td>
+                </tr>
+                <tr class="wordBreak">
+                  <td>
+                    ex. 0 <br />
+                    ex. -4999
+                  </td>
+                  <td>
+                    ex. 1 <br />
+                    ex. 5000
+                  </td>
+                  <td>
+                    ex. 5001 <br />
+                    ex. 10000
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </li>
+        </ul>
+      </li>
+      <!-- subpart d ends here -->
+      <hr />
+
+      <!-- subpart e starts form here -->
+      <li class="mt-3">
+        Cashier field must comprise name of cashier 30 in length comprising of
+        alphabets A-Z or a-z.
+        <ul>
+          <li>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter cashier name"
+              name="cash"
+              #cashierInput
+              [(ngModel)]="CashierName"
+            />
+
+            <button
+              class="btn btn-danger mt-3"
+              (click)="checkCashier(cashierInput)"
+              [disabled]="!CashierName"
+            >
+              Check
+            </button>
+          </li>
+          <li>
+            <table class="table table-responsive table-striped table-bordered">
+              <colgroup>
+                <col style="width: 25%" />
+                <col style="width: 25%" />
+                <col style="width: 25%" />
+                <col style="width: 25%" />
+              </colgroup>
+              <thead class="thead-dark">
+                <tr>
+                  <th colspan="4">Eqivalence Class Partitiong</th>
+                </tr>
+                <tr>
+                  <th>Invalid</th>
+                  <th>Valid</th>
+                  <th>Invalid</th>
+                  <th>Invalid</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    Name < 3, <br />
+                    A-Z || a-z
+                  </td>
+                  <td>
+                    >= 3 && <= 30, <br />
+                    A-Z || a-z
+                  </td>
+
+                  <td>
+                    Name > 30, <br />
+                    A-Z || a-z
+                  </td>
+                  <td>
+                    class A, B, C <br />
+                    !(A-Z || a-z)
+                  </td>
+                </tr>
+                <tr class="wordBreak">
+                  <td>
+                    ex. Li <br />
+                    ex. jk
+                  </td>
+                  <td>
+                    ex. Ana <br />
+                    ex. Jonas
+                  </td>
+
+                  <td class="wordBreak">
+                    ex. Rhoshandiatellyneshiaunneveshenk
+                  </td>
+                  <td>
+                    ex. An@ <br />
+                    ex. Jona$
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </li>
+        </ul>
+      </li>
+      <!-- subpart e ends here  -->
     </ol>
+  </div>
+</section>
+<!-- End of question 1 -->
+
+<section class="container wrapper" style="margin-top: 100px">
+  <div>
+    <h2 class="subheading">Q 2. Decision Table</h2>
+    <div class="d-flex justify-content-around mt-4">
+      <input
+        type="number"
+        class="form-control"
+        placeholder="Enter Age"
+        [(ngModel)]="age"
+        #Age
+      />
+      <p class="mx-3"></p>
+      <input
+        type="number"
+        class="form-control"
+        placeholder="Enter service year"
+        [(ngModel)]="year"
+        #Year
+
+      />
+    </div>
+    <button class="btn btn-danger mt-3" (click)="decisionTable(Age,Year)" [disabled]='!age || !year'>Check</button>
+    <table class="table table-striped table-bordered mt-5">
+      <thead class="thead-dark">
+        <tr>
+          <th colspan="10">Decision table</th>
+        </tr>
+        <tr>
+          <th colspan="5" class="rightBorder borderB">Conditions</th>
+          <th colspan="5" class="borderB">Actions</th>
+        </tr>
+        <tr>
+          <th colspan="3" class="rightBorder">Age</th>
+          <th colspan="2" class="rightBorder">Service</th>
+          <th colspan="5" class="rightBorder">Days</th>
+        </tr>
+      </thead>
+      <tbody class="decisionTbody">
+        <tr>
+          <th>&lt;18</th>
+          <th>>=60</th>
+          <th>>=45</th>
+          <th>>=30</th>
+          <th>>=15</th>
+          <th>22</th>
+          <th>2</th>
+          <th>3</th>
+          <th>5</th>
+          <th>Total</th>
+        </tr>
+
+        <tr>
+          <td>Y</td>
+          <td>N</td>
+          <td>N</td>
+          <td>N</td>
+          <td>N</td>
+          <td>T</td>
+          <td>F</td>
+          <td>F</td>
+          <td>T</td>
+          <td>27</td>
+        </tr>
+        <tr>
+          <td>N</td>
+          <td>Y</td>
+          <td>N</td>
+          <td>N</td>
+          <td>N</td>
+          <td>T</td>
+          <td>F</td>
+          <td>T</td>
+          <td>T</td>
+          <td>30</td>
+        </tr>
+        <tr>
+          <td>N</td>
+          <td>N</td>
+          <td>Y</td>
+          <td>N</td>
+          <td>N</td>
+          <td>T</td>
+          <td>T</td>
+          <td>F</td>
+          <td>F</td>
+          <td>24</td>
+        </tr>
+        <tr>
+          <td>N</td>
+          <td>N</td>
+          <td>N</td>
+          <td>Y</td>
+          <td>N</td>
+          <td>T</td>
+          <td>F</td>
+          <td>T</td>
+          <td>T</td>
+          <td>30</td>
+        </tr>
+        <tr>
+          <td>N</td>
+          <td>N</td>
+          <td>N</td>
+          <td>N</td>
+          <td>Y</td>
+          <td>T</td>
+          <td>T</td>
+          <td>F</td>
+          <td>F</td>
+          <td>24</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </section>

@@ -109,7 +109,7 @@ export class AppComponent {
   checkCashier(cashierInput) {
     var input = cashierInput.value;
     var numeric = input.match(/[0-9]/g);
-    var splChar = input.match(/[!@#$%^&*(),.?":{}|<>]/g);
+    var splChar = input.match(/[$&+,:;=?@#|'<>.-^*()%!]/g);
     console.log(input.length, numeric, splChar);
 
     if (
@@ -141,6 +141,7 @@ export class AppComponent {
       this.alertMessage('Name length Greater than 3 is Not allowed!', false);
 
     }
+
   }
 
   decisionTable(Age, Year) {
@@ -185,6 +186,5 @@ export class AppComponent {
       this.message = 'Year can not be smaller than 1 or greater than 50'
       this.valid = false;
     }
-
   }
 }

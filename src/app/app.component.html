@@ -96,7 +96,7 @@
             <button
               class="btn btn-danger mt-3"
               (click)="checkBranch(branch)"
-              [disabled]="!selectBranch"
+              [disabled]="!branchName"
             >
               Check
             </button>
@@ -365,11 +365,25 @@
         placeholder="Enter service year"
         [(ngModel)]="year"
         #Year
-
       />
     </div>
-    <button class="btn btn-danger mt-3" (click)="decisionTable(Age,Year)" [disabled]='!age || !year'>Check</button>
-    <table class="table table-striped table-bordered mt-5">
+    <button
+      class="btn btn-danger mt-3"
+      (click)="decisionTable(Age, Year)"
+      [disabled]="!age || !year"
+    >
+      Check
+    </button>
+    <br />
+    <div class="btn-group mt-5 mb-3">
+      <button type="button" class="btn btn-primary" (click)="showTable = true">
+        Normal Table
+      </button>
+      <button type="button" class="btn btn-primary" (click)="showTable = false">
+        Compact Table
+      </button>
+    </div>
+    <table class="table table-striped table-bordered">
       <thead class="thead-dark">
         <tr>
           <th colspan="10">Decision table</th>
@@ -381,10 +395,14 @@
         <tr>
           <th colspan="3" class="rightBorder">Age</th>
           <th colspan="2" class="rightBorder">Service</th>
-          <th colspan="5" class="rightBorder">Days</th>
+          <th colspan="5">Days</th>
         </tr>
       </thead>
-      <tbody class="decisionTbody">
+      <tbody
+        id="compactTable"
+        class="decisionTbody"
+        *ngIf="showTable; else compactTable"
+      >
         <tr>
           <th>&lt;18</th>
           <th>>=60</th>
@@ -397,24 +415,60 @@
           <th>5</th>
           <th>Total</th>
         </tr>
+        <tr>
+          <td>Y</td>
+          <td>N</td>
+          <td>N</td>
+          <td>Y</td>
+          <td>N</td>
+          <td>F</td>
+          <td>F</td>
+          <td>F</td>
+          <td>F</td>
+          <td>Invalid</td>
+        </tr>
+        <tr>
+          <td>Y</td>
+          <td>N</td>
+          <td>N</td>
+          <td>N</td>
+          <td>Y</td>
+          <td>F</td>
+          <td>F</td>
+          <td>F</td>
+          <td>F</td>
+          <td>Invalid</td>
+        </tr>
 
         <tr>
+          <td>N</td>
           <td>Y</td>
           <td>N</td>
-          <td>N</td>
-          <td>N</td>
+          <td>Y</td>
           <td>N</td>
           <td>T</td>
           <td>F</td>
-          <td>F</td>
           <td>T</td>
-          <td>27</td>
+          <td>T</td>
+          <td>30</td>
         </tr>
         <tr>
           <td>N</td>
           <td>Y</td>
           <td>N</td>
           <td>N</td>
+          <td>Y</td>
+          <td>T</td>
+          <td>F</td>
+          <td>T</td>
+          <td>T</td>
+          <td>30</td>
+        </tr>
+        <tr>
+          <td>N</td>
+          <td>N</td>
+          <td>Y</td>
+          <td>Y</td>
           <td>N</td>
           <td>T</td>
           <td>F</td>
@@ -427,30 +481,6 @@
           <td>N</td>
           <td>Y</td>
           <td>N</td>
-          <td>N</td>
-          <td>T</td>
-          <td>T</td>
-          <td>F</td>
-          <td>F</td>
-          <td>24</td>
-        </tr>
-        <tr>
-          <td>N</td>
-          <td>N</td>
-          <td>N</td>
-          <td>Y</td>
-          <td>N</td>
-          <td>T</td>
-          <td>F</td>
-          <td>T</td>
-          <td>T</td>
-          <td>30</td>
-        </tr>
-        <tr>
-          <td>N</td>
-          <td>N</td>
-          <td>N</td>
-          <td>N</td>
           <td>Y</td>
           <td>T</td>
           <td>T</td>
@@ -458,7 +488,146 @@
           <td>F</td>
           <td>24</td>
         </tr>
+
+          <tr>
+            <td>Y</td>
+            <td>N</td>
+            <td>N</td>
+            <td>N</td>
+            <td>N</td>
+            <td>T</td>
+            <td>F</td>
+            <td>F</td>
+            <td>T</td>
+            <td>27</td>
+          </tr>
+          <tr>
+            <td>N</td>
+            <td>Y</td>
+            <td>N</td>
+            <td>N</td>
+            <td>N</td>
+            <td>T</td>
+            <td>F</td>
+            <td>T</td>
+            <td>T</td>
+            <td>30</td>
+          </tr>
+          <tr>
+            <td>N</td>
+            <td>N</td>
+            <td>Y</td>
+            <td>N</td>
+            <td>N</td>
+            <td>T</td>
+            <td>T</td>
+            <td>F</td>
+            <td>F</td>
+            <td>24</td>
+          </tr>
+          <tr>
+            <td>N</td>
+            <td>N</td>
+            <td>N</td>
+            <td>Y</td>
+            <td>N</td>
+            <td>T</td>
+            <td>F</td>
+            <td>T</td>
+            <td>T</td>
+            <td>30</td>
+          </tr>
+          <tr>
+            <td>N</td>
+            <td>N</td>
+            <td>N</td>
+            <td>N</td>
+            <td>Y</td>
+            <td>T</td>
+            <td>T</td>
+            <td>F</td>
+            <td>F</td>
+            <td>24</td>
+          </tr>
       </tbody>
+      <!-- compact table  -->
+      <ng-template #compactTable>
+        <tbody class="decisionTbody">
+          <tr>
+            <th>&lt;18</th>
+            <th>>=60</th>
+            <th>>=45</th>
+            <th>>=30</th>
+            <th>>=15</th>
+            <th>22</th>
+            <th>2</th>
+            <th>3</th>
+            <th>5</th>
+            <th>Total</th>
+          </tr>
+
+          <tr>
+            <td>Y</td>
+            <td>N</td>
+            <td>N</td>
+            <td>N</td>
+            <td>N</td>
+            <td>T</td>
+            <td>F</td>
+            <td>F</td>
+            <td>T</td>
+            <td>27</td>
+          </tr>
+          <tr>
+            <td>N</td>
+            <td>Y</td>
+            <td>N</td>
+            <td>N</td>
+            <td>N</td>
+            <td>T</td>
+            <td>F</td>
+            <td>T</td>
+            <td>T</td>
+            <td>30</td>
+          </tr>
+          <tr>
+            <td>N</td>
+            <td>N</td>
+            <td>Y</td>
+            <td>N</td>
+            <td>N</td>
+            <td>T</td>
+            <td>T</td>
+            <td>F</td>
+            <td>F</td>
+            <td>24</td>
+          </tr>
+          <tr>
+            <td>N</td>
+            <td>N</td>
+            <td>N</td>
+            <td>Y</td>
+            <td>N</td>
+            <td>T</td>
+            <td>F</td>
+            <td>T</td>
+            <td>T</td>
+            <td>30</td>
+          </tr>
+          <tr>
+            <td>N</td>
+            <td>N</td>
+            <td>N</td>
+            <td>N</td>
+            <td>Y</td>
+            <td>T</td>
+            <td>T</td>
+            <td>F</td>
+            <td>F</td>
+            <td>24</td>
+          </tr>
+        </tbody>
+      </ng-template>
     </table>
   </div>
 </section>

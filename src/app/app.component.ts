@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'cap438';
   message = undefined;
   valid: Boolean;
-  show = undefined;
+  showTable: boolean = true;
 
 
 
@@ -22,7 +22,7 @@ export class AppComponent {
   CashierName;
   age;
   year;
-  baseDays;
+  baseDays = 0;
   alertMessage(mess, caseValue) {
     this.message = mess;
     this.valid = caseValue;
@@ -147,15 +147,26 @@ export class AppComponent {
     var age = Age.value;
     var year = Year.value;
     this.baseDays = 22;
-    this.valid = true;
 
+    if (age > 14 && age < 71) {
+      if (year > (age - 14)) {
+        this.message = 'Invalid Age and year combination'
+        this.valid = false
+      }
+      else {
+        this.baseDays = this.baseDays + 5;
+        this.message = 'Your total Number of vacations ->' + this.baseDays;
+        this.valid = true;
+      }
+      return 0;
+    }
 
     if (age >= 60 || year >= 30) {
       this.baseDays = this.baseDays + 3;
 
     }
 
-    if (age <=18 || age >= 60 || year >= 30) {
+    if (age <= 18 || age >= 60 || year >= 30) {
       this.baseDays = this.baseDays + 5;
     }
     else if ((age >= 45 && age < 60) || (year >= 15 && year < 30)) {
@@ -164,6 +175,7 @@ export class AppComponent {
 
 
     this.message = 'Your total Number of vacations ->' + this.baseDays;
+    this.valid = true;
 
     if (age < 15 || age > 70) {
       this.message = 'Age can not be smaller than 15 or greater than 70'

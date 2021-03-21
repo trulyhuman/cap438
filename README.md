@@ -1,3 +1,10 @@
+<video width="320" height="240" controls>
+  <source src="movie.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+
+
+
 # Cap438
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.6.
